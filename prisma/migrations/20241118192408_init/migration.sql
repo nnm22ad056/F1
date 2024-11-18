@@ -16,13 +16,10 @@ CREATE TABLE "Driver" (
     "name" TEXT NOT NULL,
     "rank" INTEGER NOT NULL,
     "nationality" TEXT NOT NULL,
-    "wins" INTEGER NOT NULL,
     "podiums" INTEGER NOT NULL,
     "championships" INTEGER NOT NULL,
-    "fastestLaps" INTEGER NOT NULL,
     "carId" INTEGER NOT NULL,
     "teamId" INTEGER NOT NULL,
-    "pointsId" INTEGER NOT NULL,
 
     CONSTRAINT "Driver_pkey" PRIMARY KEY ("id")
 );
@@ -56,7 +53,6 @@ CREATE TABLE "Points" (
     "id" SERIAL NOT NULL,
     "points" INTEGER NOT NULL,
     "year" INTEGER NOT NULL,
-    "DriverId" INTEGER NOT NULL,
     "driverId" INTEGER NOT NULL,
 
     CONSTRAINT "Points_pkey" PRIMARY KEY ("id")

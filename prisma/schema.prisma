@@ -60,3 +60,5 @@ model Points {
   driverId Int   // Removed redundant field `DriverId`
   Driver   Driver @relation(fields: [driverId], references: [id]) // Foreign key
 }
+
+
