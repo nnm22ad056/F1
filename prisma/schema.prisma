@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int    @id @default(autoincrement())
+  first_name String
+  last_name  String
+  company    String
+  email      String @unique
+  password   String
+
+  @@map("users")
+}
+
+
+model Driver {
+  id            Int         @id @default(autoincrement())
+  name          String
+  rank          Int
+  nationality   String
+  podiums       Int
+  championships Int
+  carId         Int
+  GrandPrix     GrandPrix[]
+  Team          Team        @relation(fields: [teamId], references: [id])
+  teamId        Int
+  Points        Points[]
+}
+
+model GrandPrix {
+  id       Int      @id @default(autoincrement())
+  location String
+  date     DateTime
+  winnerId Int
+  winner   Driver   @relation(fields: [winnerId], references: [id])
+  car      String
+  laps     Int
+  time     String
+}
+
+model Team {
+  id     Int      @id @default(autoincrement())
+  rank   Int
+  name   String
+  points Int
+  Car    String
+  Driver Driver[] // Relation to Driver
+}
+
+model Points {
+  id       Int    @id @default(autoincrement())
+  points   Int
+  year     Int
+  driverId Int   // Removed redundant field `DriverId`
+  Driver   Driver @relation(fields: [driverId], references: [id]) // Foreign key
+}
