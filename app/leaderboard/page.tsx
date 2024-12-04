@@ -33,7 +33,7 @@ export default function RaceResultsTable() {
       time: "1:31:44.742",
     },
     {
-      grandPrix: "Saudi Arabia",
+      location: "Saudi Arabia",
       date: "09 Mar 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -41,7 +41,7 @@ export default function RaceResultsTable() {
       time: "1:20:43.273",
     },
     {
-      grandPrix: "Australia",
+      location: "Australia",
       date: "24 Mar 2024",
       winner: "Carlos Sainz",
       car: "Ferrari",
@@ -49,7 +49,7 @@ export default function RaceResultsTable() {
       time: "1:20:26.843",
     },
     {
-      grandPrix: "Japan",
+      location: "Japan",
       date: "07 Apr 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -57,7 +57,7 @@ export default function RaceResultsTable() {
       time: "1:54:23.566",
     },
     {
-      grandPrix: "China",
+      location: "China",
       date: "21 Apr 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -65,7 +65,7 @@ export default function RaceResultsTable() {
       time: "1:40:52.554",
     },
     {
-      grandPrix: "Miami",
+      location: "Miami",
       date: "05 May 2024",
       winner: "Lando Norris",
       car: "McLaren Mercedes",
@@ -73,7 +73,7 @@ export default function RaceResultsTable() {
       time: "1:30:49.876",
     },
     {
-      grandPrix: "Emilia-Romagna",
+      location: "Emilia-Romagna",
       date: "19 May 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -81,7 +81,7 @@ export default function RaceResultsTable() {
       time: "1:25:25.252",
     },
     {
-      grandPrix: "Monaco",
+      location: "Monaco",
       date: "26 May 2024",
       winner: "Charles Leclerc",
       car: "Ferrari",
@@ -89,7 +89,7 @@ export default function RaceResultsTable() {
       time: "2:23:15.554",
     },
     {
-      grandPrix: "Canada",
+      location: "Canada",
       date: "09 Jun 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -97,7 +97,7 @@ export default function RaceResultsTable() {
       time: "1:45:47.927",
     },
     {
-      grandPrix: "Spain",
+      location: "Spain",
       date: "23 Jun 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -105,7 +105,7 @@ export default function RaceResultsTable() {
       time: "1:28:20.227",
     },
     {
-      grandPrix: "Austria",
+      location: "Austria",
       date: "30 Jun 2024",
       winner: "George Russell",
       car: "Mercedes",
@@ -113,7 +113,7 @@ export default function RaceResultsTable() {
       time: "1:24:22.798",
     },
     {
-      grandPrix: "Great Britain",
+      location: "Great Britain",
       date: "07 Jul 2024",
       winner: "Lewis Hamilton",
       car: "Mercedes",
@@ -121,7 +121,7 @@ export default function RaceResultsTable() {
       time: "1:22:27.059",
     },
     {
-      grandPrix: "Hungary",
+      location: "Hungary",
       date: "21 Jul 2024",
       winner: "Oscar Piastri",
       car: "McLaren Mercedes",
@@ -129,7 +129,7 @@ export default function RaceResultsTable() {
       time: "1:38:01.989",
     },
     {
-      grandPrix: "Belgium",
+      location: "Belgium",
       date: "28 Jul 2024",
       winner: "Lewis Hamilton",
       car: "Mercedes",
@@ -137,7 +137,7 @@ export default function RaceResultsTable() {
       time: "1:19:57.566",
     },
     {
-      grandPrix: "Netherlands",
+      location: "Netherlands",
       date: "25 Aug 2024",
       winner: "Lando Norris",
       car: "McLaren Mercedes",
@@ -145,7 +145,7 @@ export default function RaceResultsTable() {
       time: "1:30:45.519",
     },
     {
-      grandPrix: "Italy",
+      location: "Italy",
       date: "01 Sep 2024",
       winner: "Charles Leclerc",
       car: "Ferrari",
@@ -153,7 +153,7 @@ export default function RaceResultsTable() {
       time: "1:14:40.727",
     },
     {
-      grandPrix: "Azerbaijan",
+      location: "Azerbaijan",
       date: "15 Sep 2024",
       winner: "Oscar Piastri",
       car: "McLaren Mercedes",
@@ -161,7 +161,7 @@ export default function RaceResultsTable() {
       time: "1:32:58.007",
     },
     {
-      grandPrix: "Singapore",
+      location: "Singapore",
       date: "22 Sep 2024",
       winner: "Lando Norris",
       car: "McLaren Mercedes",
@@ -169,7 +169,7 @@ export default function RaceResultsTable() {
       time: "1:40:52.571",
     },
     {
-      grandPrix: "United States",
+      location: "United States",
       date: "20 Oct 2024",
       winner: "Charles Leclerc",
       car: "Ferrari",
@@ -177,7 +177,7 @@ export default function RaceResultsTable() {
       time: "1:35:09.639",
     },
     {
-      grandPrix: "Mexico",
+      location: "Mexico",
       date: "27 Oct 2024",
       winner: "Carlos Sainz",
       car: "Ferrari",
@@ -185,7 +185,7 @@ export default function RaceResultsTable() {
       time: "1:40:55.800",
     },
     {
-      grandPrix: "Brazil",
+      location: "Brazil",
       date: "03 Nov 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",
@@ -196,7 +196,7 @@ export default function RaceResultsTable() {
 
   const uniqueGrandPrix = [
     "All Grand Prix",
-    ...new Set(raceResults.map((race) => race.grandPrix)),
+    ...new Set(raceResults.map((race) => race.location)),
   ];
   const uniqueWinners = [
     "All Winners",
@@ -225,7 +225,7 @@ export default function RaceResultsTable() {
   const filteredResults = raceResults.filter(
     (race) =>
       (selectedGrandPrix === "All Grand Prix" ||
-        race.grandPrix === selectedGrandPrix) &&
+        race.location === selectedGrandPrix) &&
       (selectedWinner === "All Winners" || race.winner === selectedWinner) &&
       (selectedCar === "All Cars" || race.car === selectedCar)
   );
@@ -396,7 +396,7 @@ export default function RaceResultsTable() {
                     key={index}
                     className="border-b bg-blue-20 border-zinc-800 hover:bg-blue-10"
                   >
-                    <td className="px-6 py-4">{race.grandPrix}</td>
+                    <td className="px-6 py-4">{race.location}</td>
                     <td className="px-6 py-4">{race.date}</td>
                     <td className="px-6 py-4">{race.winner}</td>
                     <td className="px-6 py-4">{race.car}</td>
