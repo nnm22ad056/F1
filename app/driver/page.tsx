@@ -6,6 +6,7 @@ export default () => {
   const drivers = [
     {
       name: "Max Verstappen",
+      rank: 1,
       image: "/icons/verstappen.jpg",
       country: "Netherlands",
       flag: "/icons/netherlands-flag.svg",
@@ -16,6 +17,7 @@ export default () => {
     },
     {
       name: "Lando Norris",
+      rank: 2,
       image: "/icons/norris.jpg",
       country: "United Kingdom",
       flag: "/icons/uk-flag.svg",
@@ -26,6 +28,7 @@ export default () => {
     },
     {
       name: "Charles Leclerc",
+      rank: 3,
       image: "/icons/leclerc.jpg",
       country: "Monaco",
       flag: "/icons/monaco-flag.png",
@@ -59,10 +62,11 @@ export default () => {
           </h3>
         </div>
 
+        {/* top 3 */}
         <div className="flex flex-col-3 items-center justify-between px-80">
           {drivers.map((driver) => {
             return (
-              <div className="w-full rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
+              <div key={driver.rank} className="w-full rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
                 <div className="relative z-10">
                   <img
                     src={driver.image}
