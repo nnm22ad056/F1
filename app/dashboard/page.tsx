@@ -1,8 +1,7 @@
 "use client"
 
-// app/dashboard/page.tsx
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // App Router version
+import { useRouter } from "next/navigation"; 
 import Link from "next/link";
 
 const Dashboard = () => {

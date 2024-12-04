@@ -1,7 +1,42 @@
 "use client";
 import Nav from "@/components/Nav";
+import { div } from "framer-motion/client";
 
 export default () => {
+  //dummy data
+  const drivers = [
+    {
+      name: "Max Verstappen",
+      image: "/icons/verstappen.jpg",
+      country: "Netherlands",
+      flag: "/icons/netherlands-flag.svg",
+      wins: 10,
+      podiums: 15,
+      championships: 1,
+      fastestLaps: 3,
+    },
+    {
+      name: "Lando Norris",
+      image: "/icons/norris.jpg",
+      country: "United Kingdom",
+      flag: "/icons/uk-flag.svg",
+      wins: 3,
+      podiums: 10,
+      championships: 0,
+      fastestLaps: 2,
+    },
+    {
+      name: "Charles Leclerc",
+      image: "/icons/leclerc.jpg",
+      country: "Monaco",
+      flag: "/icons/monaco-flag.png",
+      wins: 5,
+      podiums: 24,
+      championships: 0,
+      fastestLaps: 10,
+    },
+  ];
+
   return (
     <main className="bg-blue-10">
       <Nav />
@@ -11,7 +46,8 @@ export default () => {
             <span
               className="font-bold text-7xl animate-shimmer bg-[linear-gradient(110deg,#C30000,45%,#EE0000,55%,#C30000)] 
               bg-[length:200%_200%] bg-clip-text text-transparent transition-all duration-800 ease-in-out"
-            >Champions
+            >
+              Champions
             </span>{" "}
             of the Track
           </h1>
@@ -23,361 +59,105 @@ export default () => {
             track, and this is where you can learn all about them.
           </h3>
         </div>
+
         <div className="flex flex-col-3 items-center justify-between px-80">
-          <div className="w-ful rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
-            <div className="relative z-10">
-              <img
-                src="/icons/verstappen.jpg"
-                alt="Max Verstappen"
-                width={500}
-                height={500}
-                className="rounded-2xl"
-              />
-              <div className="py-4 relative z-20">
-                <h2 className="text-white text-2xl text-left font-bold">
-                  <a href="/max" className="text-gold hover:underline">
-                    <span className="text-gold">#1 </span>Max Verstappen
-                  </a>
-                </h2>
-
-                <div className="flex items-center mt-4">
+          {drivers.map((driver) => {
+            return (
+              <div className="w-full rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
+                <div className="relative z-10">
                   <img
-                    src="/icons/netherlands-flag.svg" // Replace with the correct path to the flag image
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
+                    src={driver.image}
+                    alt={driver.name}
+                    width={500}
+                    height={500}
+                    className="rounded-2xl"
                   />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
+                  <div className="py-4 relative z-20">
+                    <h2 className="text-white text-2xl text-left font-bold">
+                      <a href="" className="text-bronze hover:underline">
+                        <span className="text-bronze">#3 </span>{driver.name}
+                      </a>
+                    </h2>
 
-                <div className="mt-4">
-                  <ul className="text-neutral-200 mt-2 space-y-1">
-                    <li>
-                      Wins: <span className="font-bold">10</span>
-                    </li>
-                    <li>
-                      Podiums: <span className="font-bold">15</span>
-                    </li>
-                    <li>
-                      Championships: <span className="font-bold">1</span>
-                    </li>
-                    <li>
-                      Fastest Laps: <span className="font-bold">3</span>
-                    </li>
-                  </ul>
+                    <div className="flex items-center mt-4">
+                      <img
+                        src={driver.flag}
+                        alt={driver.flag + "'s Flag"}
+                        className="w-6 h-4 mr-2"
+                      />
+                      <span className="text-neutral-200">{driver.country}</span>
+                    </div>
+
+                    <div className="mt-4">
+                      <ul className="text-neutral-200 mt-2 space-y-1">
+                        <li>
+                          Wins: <span className="font-bold">{driver.wins}</span>
+                        </li>
+                        <li>
+                          Podiums: <span className="font-bold">{driver.podiums}</span>
+                        </li>
+                        <li>
+                          Championships: <span className="font-bold">{driver.championships}</span>
+                        </li>
+                        <li>
+                          Fastest Laps: <span className="font-bold">{driver.fastestLaps}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="w-full rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
-            <div className="relative z-10">
-              <img
-                src="/icons/norris.jpg"
-                alt="Max Verstappen"
-                width={500}
-                height={500}
-                className="rounded-2xl"
-              />
-              <div className="py-4 relative z-20">
-                <h2 className="text-white text-2xl text-left font-bold">
-                  <a
-                    href="/driver"
-                    className="text-silver hover:underline"
-                  >
-                    <span className="text-silver">#2 </span>Lando Norris
-                  </a>
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/uk-flag.svg" // Replace with the correct path to the flag image
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">United Kingdom</span>
-                </div>
-
-                <div className="mt-4">
-                  <ul className="text-neutral-200 mt-2 space-y-1">
-                    <li>
-                      Wins: <span className="font-bold">10</span>
-                    </li>
-                    <li>
-                      Podiums: <span className="font-bold">15</span>
-                    </li>
-                    <li>
-                      Championships: <span className="font-bold">1</span>
-                    </li>
-                    <li>
-                      Fastest Laps: <span className="font-bold">3</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full rounded-2xl overflow-hidden max-w-sm bg-blue-20 p-8">
-            <div className="relative z-10">
-              <img
-                src="/icons/leclerc.jpg"
-                alt="Max Verstappen"
-                width={500}
-                height={500}
-                className="rounded-2xl"
-              />
-              <div className="py-4 relative z-20">
-                <h2 className="text-white text-2xl text-left font-bold">
-                  <a href="" className="text-bronze hover:underline">
-                    <span className="text-bronze">#3 </span>Charles Leclerc
-                  </a>
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/monaco-flag.png" // Replace with the correct path to the flag image
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Monaco</span>
-                </div>
-
-                <div className="mt-4">
-                  <ul className="text-neutral-200 mt-2 space-y-1">
-                    <li>
-                      Wins: <span className="font-bold">10</span>
-                    </li>
-                    <li>
-                      Podiums: <span className="font-bold">15</span>
-                    </li>
-                    <li>
-                      Championships: <span className="font-bold">1</span>
-                    </li>
-                    <li>
-                      Fastest Laps: <span className="font-bold">3</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
 
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
+        {/* list of drivers */}
+
+        {drivers.map((driver) => {
+          return (
+            <div className="flex flex-row items-center justify-between px-80 py-4">
+              <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
+                <img
+                  src={driver.image}
+                  alt={driver.name}
+                  width={100}
+                  height={100}
+                  className="rounded-2xl mr-6"
+                />
+                <div className="relative z-20 grid grid-cols-2 gap-4">
+                  <div>
+                    <h2 className="text-white text-3xl font-bold">
+                      {driver.name}
+                    </h2>
+
+                    <div className="flex items-center mt-4">
+                      <img
+                        src={driver.flag}
+                        alt={driver.country + "'s Flag"}
+                        className="w-6 h-4 mr-2"
+                      />
+                      <span className="text-neutral-200">{driver.country}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col space-y-2">
+                    <p className="text-neutral-200 word">
+                      Wins: <span className="font-bold"> {driver.wins} </span>
+                      Podiums:{" "}
+                      <span className="font-bold"> {driver.podiums} </span>
+                      Championships:{" "}
+                      <span className="font-bold">
+                        {" "}
+                        {driver.championships}{" "}
+                      </span>
+                      Fastest Laps:{" "}
+                      <span className="font-bold"> {driver.fastestLaps} </span>
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
             </div>
-          </div>
-
-        </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div className="flex flex-row items-center justify-between px-80 py-4">
-          <div className="w-full relative rounded-2xl overflow-hidden max-w-7xl bg-blue-10 border border-zinc-800 p-8 flex items-center">
-            <img
-              src="/icons/verstappen.jpg"
-              alt="Max Verstappen"
-              width={100}
-              height={100}
-              className="rounded-2xl mr-6"
-            />
-            <div className="relative z-20 grid grid-cols-2 gap-4">
-              <div>
-                <h2 className="text-white text-3xl font-bold">
-                  Max Verstappen
-                </h2>
-
-                <div className="flex items-center mt-4">
-                  <img
-                    src="/icons/netherlands-flag.svg"
-                    alt="Netherlands Flag"
-                    className="w-6 h-4 mr-2"
-                  />
-                  <span className="text-neutral-200">Netherlands</span>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <p className="text-neutral-200 word">
-                  Wins: <span className="font-bold"> 10 </span>
-                  Podiums: <span className="font-bold"> 15 </span>
-                  Championships: <span className="font-bold"> 1 </span>
-                  Fastest Laps: <span className="font-bold"> 3 </span>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        
-
+          );
+        })}
       </section>
       <footer className="bg-blue-10 border-t">
         <div className="mx-auto w-full max-w-screen-xl p-5 py-6 lg:py-8">
