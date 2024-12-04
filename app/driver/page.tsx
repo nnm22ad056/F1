@@ -1,6 +1,5 @@
 "use client";
 import Nav from "@/components/Nav";
-import { div } from "framer-motion/client";
 
 export default () => {
   //dummy data
@@ -75,7 +74,8 @@ export default () => {
                   <div className="py-4 relative z-20">
                     <h2 className="text-white text-2xl text-left font-bold">
                       <a href="" className="text-bronze hover:underline">
-                        <span className="text-bronze">#3 </span>{driver.name}
+                        <span className="text-bronze">#3 </span>
+                        {driver.name}
                       </a>
                     </h2>
 
@@ -94,13 +94,20 @@ export default () => {
                           Wins: <span className="font-bold">{driver.wins}</span>
                         </li>
                         <li>
-                          Podiums: <span className="font-bold">{driver.podiums}</span>
+                          Podiums:{" "}
+                          <span className="font-bold">{driver.podiums}</span>
                         </li>
                         <li>
-                          Championships: <span className="font-bold">{driver.championships}</span>
+                          Championships:{" "}
+                          <span className="font-bold">
+                            {driver.championships}
+                          </span>
                         </li>
                         <li>
-                          Fastest Laps: <span className="font-bold">{driver.fastestLaps}</span>
+                          Fastest Laps:{" "}
+                          <span className="font-bold">
+                            {driver.fastestLaps}
+                          </span>
                         </li>
                       </ul>
                     </div>
@@ -141,16 +148,24 @@ export default () => {
                   </div>
                   <div className="flex flex-col space-y-2">
                     <p className="text-neutral-200 word">
-                      Wins: <span className="font-bold"> {driver.wins} </span>
-                      Podiums:{" "}
-                      <span className="font-bold"> {driver.podiums} </span>
-                      Championships:{" "}
-                      <span className="font-bold">
-                        {" "}
-                        {driver.championships}{" "}
-                      </span>
-                      Fastest Laps:{" "}
-                      <span className="font-bold"> {driver.fastestLaps} </span>
+                      <div>
+                        Wins: <span className="font-bold"> {driver.wins} </span>
+                      </div>
+                      <div>
+                        Podiums:
+                        <span className="font-bold"> {driver.podiums} </span>
+                      </div>
+                      <div>
+                        Championships:{" "}
+                        <span className="font-bold">
+                          {" "}
+                          {driver.championships}
+                        </span>
+                      </div>
+                      <div>
+                        Fastest Laps:{" "}
+                        <span className="font-bold">{driver.fastestLaps}</span>
+                      </div>
                     </p>
                   </div>
                 </div>
