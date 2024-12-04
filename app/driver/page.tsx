@@ -77,7 +77,7 @@ export default () => {
                   />
                   <div className="py-4 relative z-20">
                     <h2 className="text-white text-2xl text-left font-bold">
-                      <a href="" className="text-bronze hover:underline">
+                      <a href={"/"+driver.name.toLowerCase().split(" ")[0]} className="text-bronze hover:underline">
                         <span className="text-bronze">#3 </span>
                         {driver.name}
                       </a>

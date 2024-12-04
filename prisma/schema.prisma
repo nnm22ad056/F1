@@ -7,58 +7,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id         Int    @id @default(autoincrement())
+model Manager {
+  id         Int      @id @default(autoincrement())
   first_name String
-  last_name  String
+  last_name  String?
   company    String
-  email      String @unique
+  email      String   @unique
   password   String
+  Driver     Driver[]
 
-  @@map("users")
+  @@map("managers")
 }
-
 
 model Driver {
-  id            Int         @id @default(autoincrement())
-  name          String
-  rank          Int
-  nationality   String
-  podiums       Int
-  championships Int
-  carId         Int
-  GrandPrix     GrandPrix[]
-  Team          Team        @relation(fields: [teamId], references: [id])
-  teamId        Int
-  Points        Points[]
+  id            Int     @id @default(autoincrement())
+  first_name    String
+  last_name     String?
+  description   String?
+  country       String
+  car           String?
+  points        Int     @default(0)
+  wins          Int     @default(0)
+  podiums       Int     @default(0)
+  championships Int     @default(0)
+  managerId     Int
+  manager       Manager @relation(fields: [managerId], references: [id])
+  Race          Race[]
 }
 
-model GrandPrix {
-  id       Int      @id @default(autoincrement())
-  location String
-  date     DateTime
-  winnerId Int
-  winner   Driver   @relation(fields: [winnerId], references: [id])
-  car      String
-  laps     Int
-  time     String
+model Race {
+  id           Int      @id @default(autoincrement())
+  location     String
+  date         DateTime @default(now())
+  winnerId     Int
+  winner       Driver   @relation(fields: [winnerId], references: [id])
+  laps         Int
+  hours        Int
+  minutes      Int
+  seconds      Int
+  milliseconds Int
 }
-
-model Team {
-  id     Int      @id @default(autoincrement())
-  rank   Int
-  name   String
-  points Int
-  Car    String
-  Driver Driver[] // Relation to Driver
-}
-
-model Points {
-  id       Int    @id @default(autoincrement())
-  points   Int
-  year     Int
-  driverId Int   // Removed redundant field `DriverId`
-  Driver   Driver @relation(fields: [driverId], references: [id]) // Foreign key
-}
-
-

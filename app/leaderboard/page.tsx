@@ -4,7 +4,7 @@ import { useState } from "react";
 import Nav from "@/components/Nav";
 
 type RaceResult = {
-  grandPrix: string;
+  location: string;
   date: string;
   winner: string;
   car: string;
@@ -25,7 +25,7 @@ export default function RaceResultsTable() {
 
   const raceResults: RaceResult[] = [
     {
-      grandPrix: "Bahrain",
+      location: "Bahrain",
       date: "02 Mar 2024",
       winner: "Max Verstappen",
       car: "Red Bull Racing Honda RBPT",

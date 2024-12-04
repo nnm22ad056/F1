@@ -23,8 +23,8 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Create user in the database
-    const user = await prisma.user.create({
+    // Create manager in the database
+    const manager = await prisma.manager.create({
       data: {
         first_name: firstName,
         last_name: lastName,
@@ -34,21 +34,19 @@ export async function POST(request: Request) {
       },
     });
 
-    // Check if user id is valid
-    if (!user.id) {
-      console.error('User created, but ID is missing:', user);
-      return NextResponse.json({ error: 'User creation failed' }, { status: 500 });
+    // Check if manager id is valid
+    if (!manager.id) {
+      console.error('manager created, but ID is missing: '+ manager);
+      return NextResponse.json({ error: 'manager creation failed' }, { status: 500 });
     }
 
     // Generate JWT token
-    const jwt = sign({ id: user.id }, JWT_SECRET);
+    const jwt = sign({ id: manager.id }, JWT_SECRET);
 
     // Return the JWT token
-    console.log('JWT Token:', jwt);
     return NextResponse.json({ jwt: 'Bearer ' + jwt });
   } catch (e) {
-    console.error('Error creating user:', e);
-    return NextResponse.json({ error: 'User with that email already exists' }, { status: 409 });
+    return NextResponse.json({ error: 'manager with that email already exists' }, { status: 409 });
   } finally {
     await prisma.$disconnect();
   }
