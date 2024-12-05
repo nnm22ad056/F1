@@ -52,16 +52,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Enter all details" }, { status: 400 });
     }
 
+    const parsedWinnerId = parseInt(winnerId);
+    const parsedLaps = parseInt(laps);
+    const parsedHours = parseInt(hours);
+    const parsedMinutes = parseInt(minutes);
+    const parsedSeconds = parseInt(seconds);
+    const parsedMilliseconds = parseInt(milliseconds);
+
+
     // Create driver in the database
     await prisma.race.create({
       data: {
         location: location,
-        winnerId: winnerId,
-        laps: laps,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds,
-        milliseconds: milliseconds,
+        winnerId: parsedWinnerId,
+        laps: parsedLaps,
+        hours: parsedHours,
+        minutes: parsedMinutes,
+        seconds: parsedSeconds,
+        milliseconds: parsedMilliseconds,
       },
     });
 

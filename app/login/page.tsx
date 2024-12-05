@@ -34,10 +34,10 @@ export default () => {
       const response = await res.json();
       console.log(response);
 
-      // Assuming the response contains the JWT token in response.jwt
-      if (response.jwt) {
-        // Store the JWT token in localStorage
+      // Assuming the response contains the JWT token & manager id in response.jwt
+      if (response.jwt && response.managerId) {
         localStorage.setItem("authToken", response.jwt);
+        localStorage.setItem("managerId", response.managerId);
       }
 
       // Redirect or perform other actions after a successful login

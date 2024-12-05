@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -11,10 +11,10 @@ interface DriverFormData {
   last_name?: string;
   country: string;
   car?: string;
-  managerId: number;
   wins?: number;
   podiums?: number;
   championships?: number;
+  managerId?: number;
 }
 
 export default function DriverForm() {
@@ -23,29 +23,55 @@ export default function DriverForm() {
     last_name: "",
     country: "",
     car: "",
-    managerId: 0,
     wins: 0,
     podiums: 0,
     championships: 0,
+    managerId: 0,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
+  // Retrieve managerId from localStorage once when the component mounts
+  useEffect(() => {
+    const storedManagerId = localStorage.getItem('managerId');
+    if (storedManagerId) {
+      setFormData(prevData => ({
+        ...prevData,
+        managerId: parseInt(storedManagerId)
+      }));
+    }
+  }, []);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
+
+    // For numeric fields (wins, podiums, championships), we parse the value as an integer
     setFormData((prevData) => ({
       ...prevData,
-      [name]: name === "managerId" || name === "wins" || name === "podiums" || name === "championships"
-        ? parseInt(value) || 0
-        : value,
+      [name]:
+        name === "wins" || name === "podiums" || name === "championships"
+          ? (value ? parseInt(value) : 0)
+          : value,
     }));
+  };
+
+  const validateForm = (): boolean => {
+    // Basic validation to check if required fields are filled
+    return formData.first_name !== "" && formData.country !== "";
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Ensure form data is valid before submitting
+    if (!validateForm()) {
+      setMessage("Please fill in all required fields.");
+      return;
+    }
+
     setIsSubmitting(true);
     setMessage(null);
 
@@ -128,21 +154,6 @@ export default function DriverForm() {
             name="car"
             placeholder="Enter car (optional)"
             value={formData.car || ""}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className="mb-4">
-          <Label htmlFor="managerId" className="block text-sm font-medium mb-2 text-blue-20">
-            Manager ID:
-          </Label>
-          <Input
-            required
-            type="number"
-            id="managerId"
-            name="managerId"
-            placeholder="Enter manager ID"
-            value={formData.managerId || ""}
             onChange={handleChange}
           />
         </div>

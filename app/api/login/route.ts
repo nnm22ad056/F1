@@ -40,9 +40,16 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // If login is successful, generate JWT token
-    const jwt = sign({ id: manager.id }, JWT_SECRET, { expiresIn: "1h" }); // You can set the expiration time here
+    const drivers = await prisma.driver.findMany({
+      where: {
+        managerId: manager.id,
+      },
+    });
 
+    console.log("Drivers:", drivers[0].id, drivers[1].id);
+
+    // If login is successful, generate JWT token
+    const jwt = sign({ id: manager.id }, JWT_SECRET, { expiresIn: "1h" });
     // Omit the password from the manager data
     const { password: _, ...managerWithoutPassword } = manager;
 
@@ -51,6 +58,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       message: "Login successful",
       manager: managerWithoutPassword,
+      managerId: manager.id,
+      driver1Id: drivers[0].id,
+      driver2Id: drivers[1].id,
       jwt: `Bearer ${jwt}`,
     });
   } catch (error) {

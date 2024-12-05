@@ -42,9 +42,12 @@ const SignupForm = () => {
       const response = await res.json();
       console.log(response);
 
-      // Store JWT token in localStorage
-      if (response.jwt) {
+      // Store JWT token & manager id in localStorage
+      if (response.jwt && response.managerId && response.driver1Id && response.driver2Id) {
         localStorage.setItem("authToken", response.jwt);
+        localStorage.setItem("managerId", response.managerId);
+        localStorage.setItem("driver1Id", response.driver1Id);
+        localStorage.setItem("driver2Id", response.driver2Id);
       }
 
       // Redirect to the dashboard after successful signup

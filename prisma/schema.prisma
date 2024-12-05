@@ -24,7 +24,7 @@ model Driver {
   first_name    String
   last_name     String?
   description   String?
-  country       String
+  country       String?
   car           String?
   points        Int     @default(0)
   wins          Int     @default(0)
