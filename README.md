@@ -15,7 +15,7 @@ Generate a prisma client (If you have a prisma migration folder already):
 ```bash
 npx prisma generate
 ```
-Check out the database using Prisma Studio
+### Check out the database using Prisma Studio
 ```bash
 npx prisma studio
 ```
