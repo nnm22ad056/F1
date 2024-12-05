@@ -173,7 +173,7 @@ export default function FileUpload() {
                   activeSection === "Race Details" ? "bg-blue-20" : ""
                 }`}
               >
-                Race Details
+                Leaderboard Stats
               </div>
             </Link>
             <Link
@@ -206,15 +206,6 @@ export default function FileUpload() {
                 Driver 2
               </div>
             </Link>
-            <Link href="#" onClick={() => setActiveSection("Settings")}>
-              <div
-                className={`hover:bg-blue-20 p-2 rounded ${
-                  activeSection === "Settings" ? "bg-blue-20" : ""
-                }`}
-              >
-                Settings
-              </div>
-            </Link>
           </div>
         </div>
 
@@ -225,10 +216,16 @@ export default function FileUpload() {
               <div>
                 {activeSection === "Race Details" && (
                   <div>
-                    <h2 className="text-xl font-bold mb-3">Race Details</h2>
-                    <p>
-                      Welcome to your Race Details. Here you can add details for
-                      a new race.
+                    <h2 className="text-xl font-bold mb-3 m">
+                      {" "}
+                      Add Leaderboard Stats
+                    </h2>
+                    <p className="mb-6">
+                      Keep your leaderboard updated and competitive! Use this
+                      section to input crucial race details that reflect the
+                      latest results. Add race locations, winners, lap counts,
+                      and times to ensure your leaderboard stays accurate and
+                      engaging for fans and participants alike.
                     </p>
                     <RaceDetailsForm />
                   </div>
@@ -330,7 +327,7 @@ export default function FileUpload() {
 
                     <button
                       type="submit"
-                      className="mt-5 px-4 py-2 bg-blue-500 text-white rounded-md"
+                      className="mt-5 px-4 py-2 bg-red-10 hover:bg-red-20 text-white rounded-md"
                     >
                       Update
                     </button>
