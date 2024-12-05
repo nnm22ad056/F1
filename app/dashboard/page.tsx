@@ -6,7 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import RaceDetailsForm from "@/components/RaceDetailsForm";
 
-const Dashboard = () => {
+export default function FileUpload() {
   const [selectedDriver, setSelectedDriver] = useState("Driver 1"); // Default to Driver 1
   const [activeSection, setActiveSection] = useState("Race Details");
   const [driverData, setDriverData] = useState(null); // Holds the fetched driver details
@@ -24,10 +24,47 @@ const Dashboard = () => {
   }); // Form data
   const router = useRouter();
 
+  //!
+
+  const [file, setFile] = useState<File | null>(null);
+  const [message, setMessage] = useState<string>("");
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) setFile(file);
+  };
+
+  const handleImageSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!file) {
+      setMessage("Please select a file.");
+      return;
+    }
+
+    const fileFormData = new FormData();
+    fileFormData.append("file", file);
+
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: fileFormData,
+      });
+
+      if (response.ok) {
+        setMessage("File uploaded successfully.");
+      } else {
+        setMessage("File upload failed.");
+      }
+    } catch (error) {
+      setMessage("Error uploading file." + error);
+    }
+  };
+
+  //!
+
   // Get the Driver ID from localStorage
   const driver1Id = localStorage.getItem("driver1Id");
   const driver2Id = localStorage.getItem("driver2Id");
-
 
   // Fetch driver data from the backend
   const fetchDriverData = async (driverId: string) => {
@@ -93,6 +130,7 @@ const Dashboard = () => {
           },
         }
       );
+      handleImageSubmit(e);
       alert("Driver data updated successfully");
     } catch (error) {
       console.error("Error updating driver data", error);
@@ -207,7 +245,7 @@ const Dashboard = () => {
 
                   <form onSubmit={handleFormSubmit}>
                     <div className="space-y-4">
-                    <input
+                      <input
                         type="text"
                         name="DRIVER ID"
                         value={formData.id}
@@ -288,6 +326,7 @@ const Dashboard = () => {
                         placeholder="Championships"
                       />
                     </div>
+                    <input type="file" onChange={handleFileChange} />
 
                     <button
                       type="submit"
@@ -310,6 +349,4 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
-
-export default Dashboard;
+}
