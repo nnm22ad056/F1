@@ -35,9 +35,12 @@ export default () => {
       console.log(response);
 
       // Assuming the response contains the JWT token & manager id in response.jwt
-      if (response.jwt && response.managerId) {
+      if (response.jwt && response.managerId && response.driver1Id && response.driver2Id) {
         localStorage.setItem("authToken", response.jwt);
         localStorage.setItem("managerId", response.managerId);
+        localStorage.setItem("driver1Id", response.driver1Id);
+        localStorage.setItem("driver2Id", response.driver2Id);
+
       }
 
       // Redirect or perform other actions after a successful login
