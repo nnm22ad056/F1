@@ -2,10 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-Install dependencies:
+### Install dependencies:
 ```bash
 npm i
 ```
+### Prisma Setup (Run either of these commands depending on your situation)
 Generate a prisma client (If you don't have a prisma migration folder already):
 ```bash
 npx prisma migrate dev --name init
@@ -14,7 +15,7 @@ Generate a prisma client (If you have a prisma migration folder already):
 ```bash
 npx prisma generate
 ```
-Run development server:
+### Run development server:
 ```bash
 npm run dev
 ```
