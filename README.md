@@ -6,7 +6,11 @@ Install dependencies:
 ```bash
 npm i
 ```
-Generate a prisma client:
+Generate a prisma client (If you don't have a prisma migration folder already):
+```bash
+npx prisma migrate dev --name init
+```
+Generate a prisma client (If you have a prisma migration folder already):
 ```bash
 npx prisma generate
 ```
