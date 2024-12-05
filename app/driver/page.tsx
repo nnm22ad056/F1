@@ -77,7 +77,7 @@ export default function DriverList() {
               >
                 <div className="relative z-10">
                   <img
-                    src={`/uploads/` + driver.id + `.jpg`}
+                    src={`/uploads/` + driver.id + `.jpeg`}
                     alt={driver.name}
                     width={500}
                     height={500}
